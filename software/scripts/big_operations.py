@@ -38,7 +38,7 @@ def return_not_excluded_df(input_df, exclude_list_df):
         #print(query)
         #print(input_df.query(query).index)
 
-        drop_index.extend(input_df.query(query).index
+        drop_index.extend(input_df.query(query).index)
         #print(drop_index)
     input_df = input_df.drop(list(set(drop_index)))
 
