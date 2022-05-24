@@ -34,7 +34,12 @@ def return_not_excluded_df(input_df, exclude_list_df):
 
     for index, serie in exclude_list_df.iterrows():
         query = return_query(serie, '==')
-        drop_index = input_df.query(query).index
+
+        #print(query)
+        #print(input_df.query(query).index)
+
+        drop_index.extend(input_df.query(query).index
+        #print(drop_index)
     input_df = input_df.drop(list(set(drop_index)))
 
     return input_df
