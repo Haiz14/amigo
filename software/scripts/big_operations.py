@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
+import json
 
-ALPHABETS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+with open('../inputs/col_names.json', 'r') as file: ALPHABETS = json.load(file)
 
 def return_clean_df(input_df = None, allow_list_df = None, exclude_list_df = None):
 
@@ -67,7 +68,7 @@ def return_query(serie, comparer):
 
         else: 
             if type(item) == str:
-                query += f"{index} {comparer} '{item}'"
+                query += f" and {index} {comparer} '{item}'"
                 continue
             query += f" and {index} {comparer} {item}"
 
