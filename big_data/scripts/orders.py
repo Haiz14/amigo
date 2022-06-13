@@ -22,7 +22,7 @@ def csv_data_generator(names):
     
     start_date = date(1990, 3,14)
     end_date = date(2011, 8, 29)
-    dates = [fake.date_between_dates(date_start = start_date, date_end = end_date) for _ in range (fake.randomize_nb_elements(number= 250)) ]
+    dates = [fake.date_between_dates(date_start = start_date, date_end = end_date) for _ in range (fake.randomize_nb_elements(number= 25)) ]
     
     for name in names:
         for date in dates:
@@ -34,7 +34,7 @@ def csv_data_generator(names):
                 row = []
                 pid = fake.bothify('TID-??##-?#?')
                 if iteration % 500 == 0: duplicate_pid, same_order = pid, True
-                if duplicate_pid != None and same_order != True:
+                if duplicate_pid != None and same_order == False:
                     pid = duplicate_pid
                     duplicate_pid = None
                 
@@ -65,8 +65,8 @@ def add_file_name(queue, no_of_files):
 
 if __name__ == "__main__":
     
-    rows = 500
-    chunk_size = 25
+    rows = 100
+    chunk_size = 100
     names_chunks = pd.read_csv('../inputs/name.csv', nrows = rows, chunksize = chunk_size)
     file_name_queue = Queue()
     
